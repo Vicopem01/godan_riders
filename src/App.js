@@ -15,9 +15,10 @@ const App = () => {
     <>
       <Switch>
         <ProtectedRoute path="/" exact component={Bookings} />
+        <ProtectedRoute path="/history" exact component={History} />
         <ProtectedRoute path="/profile" exact component={Profile} />
         <Route path="/login" exact component={Login} />
-        <Route path="/history" exact component={History} />
+        {/* <Route path="/history" exact component={History} /> */}
       </Switch>
     </>
   );

@@ -1,0 +1,8 @@
+.container{
+    width: 85%;
+    margin: auto;
+}
+.texts{
+    display: flex;
+    justify-content: space-between;
+}
