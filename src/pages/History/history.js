@@ -6,8 +6,7 @@ const Deliveries = () => {
   return (
     <div className={classes.container}>
       <h1>History</h1>
-      hello ohhh
-      <div>
+      <div className={classes.texts}>
         <p>Today</p>
         <span>Sort: Suggested</span>
       </div>

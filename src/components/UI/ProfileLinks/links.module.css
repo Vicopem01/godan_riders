@@ -1,0 +1,21 @@
+.main {
+  width: 100%;
+  margin: 35px 0px;
+  font-weight: 400;
+  justify-content: space-between;
+}
+.main,
+.main div {
+  display: flex;
+  align-items: center;
+}
+.main div {
+  flex-basis: 85%;
+}
+.main p {
+  margin-right: auto;
+  font-size: 15px;
+}
+.main div svg {
+  margin: 0px 10px;
+}

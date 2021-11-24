@@ -12,3 +12,11 @@ export const emailCheck = (value) => {
 export const extractNumber = (n) => {
   return n.replace(/[^0-9]/g, "");
 };
+export const logout = (history) => {
+  localStorage.clear();
+  history.push("/login");
+};
+
+export const formatMoney = (n) => {
+  return n?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+};

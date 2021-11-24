@@ -1,7 +1,5 @@
 import classes from "./login.module.css";
-import EyeShow from "../../assets/images/authentication/eyeShow.svg";
 import { ButtonWhite } from "../../components/UI/Button/button";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { emailCheck } from "../../services/functions";
 import { toast } from "react-toastify";
@@ -13,7 +11,6 @@ import Mail from "../../assets/images/authentication/mail.svg";
 import Padlock from "../../assets/images/authentication/padlock.svg";
 
 const Login = ({ history }) => {
-  const [password, showPassword] = useState(true);
   const [loader, setLoader] = useState(false);
   const [mail, setMail] = useState("");
   const [pass, setPass] = useState("");
@@ -47,7 +44,6 @@ const Login = ({ history }) => {
           try {
             setLoader(true);
             const res = await login(data);
-            console.log(res);
             localStorage.setItem("token", res.data.data.token);
             history.push("/");
           } catch (error) {

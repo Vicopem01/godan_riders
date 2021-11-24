@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const NavBar = () => {
   return (
     <nav className={classes.navbar}>
-      <NavLink to="/" activeClassName="active">
+      <NavLink to="/rides" activeClassName="active">
         <div>
           <Order />
           <span>Rides</span>
@@ -17,7 +17,7 @@ const NavBar = () => {
           <span>History</span>
         </div>
       </NavLink>
-      <NavLink to="/account" activeClassName="active">
+      <NavLink to="/profile" activeClassName="active">
         <div>
           <Avatar />
           <span>Account</span>

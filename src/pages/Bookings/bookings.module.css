@@ -1,8 +1,20 @@
-.container{
-    width: 85%;
-    margin: auto;
+.container {
+  width: 85%;
+  margin: 4rem auto auto auto;
+  font-family: var(--poppins);
 }
-.texts{
-    display: flex;
-    justify-content: space-between;
+.texts {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.texts p{
+    font-weight: 500;
+}
+.texts span{
+    font-weight: 300;
+    font-size: 13px;
+}
+.container h1 {
+  margin: 20px 0;
 }

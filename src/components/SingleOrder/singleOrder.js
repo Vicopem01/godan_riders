@@ -1,24 +1,31 @@
 import classes from "./singleOrder.module.css";
+import { Distance } from "../../constant";
 
-const SingleOrder = () => {
+const NewOrder = () => {
   return (
     <div className={classes.box}>
-      <div>
+      <div className={classes.subContainer}>
+        <Distance />
         <div>
-          <p>Mowe Sagamu</p>
-          <p>No 4 ijebu ode street sagamu</p>
+          <div className={classes.places}>
+            <p className="small-text">Mowe Sagamu, Ogun state</p>
+            <p>No 4, ijebu ode starttet</p>
+          </div>
+          <p className={classes.description}>from</p>
         </div>
-        <span>Delivered</span>
-      </div>
-      <br />
-      <div>
         <div>
-          <p>Mowe Sagamu</p>
-          <p>No 4 ijebu ode street sagamu</p>
+          <div className={classes.places}>
+            <p className="small-text">Mowe Sagamu, Ogun state</p>
+            <p>No 4, ijebu ode starttet</p>
+          </div>
+          <p className={classes.description}>to</p>
         </div>
-        <span>#5,000</span>
+        <div className={classes.price}>
+          <p>Delivered</p>
+          <p>#5000</p>
+        </div>
       </div>
     </div>
   );
 };
-export default SingleOrder;
+export default NewOrder;

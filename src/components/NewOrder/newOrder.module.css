@@ -2,33 +2,45 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  margin-bottom: 35px;
 }
 .price {
   border: 0.5px solid #c4c4c4;
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 12px;
+}
+.price p {
+  background: #407bff;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 13.5px;
+  padding: 5px 12px;
+}
+.subContainer {
+  border-radius: 0px 0px 10px 10px;
+
+  background: #f9fafc;
 }
 .subContainer svg {
   position: absolute;
-  bottom: 10px;
-  left: 20px;
-  background: #f9fafc;
-  border-radius: 0px 0px 10px 10px;
+  bottom: 33px;
+  left: 10px;
 }
 .subContainer > div {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 25px;
-  padding: 20px;
+  padding: 18px 12px 12px 30px;
 }
 .places {
   text-align: right;
 }
 .places p:first-of-type {
 }
-.places p:last-of-type {
+.places p:last-of-type,
+.description {
   color: #787676;
-  font-size: 12px;
+  font-size: 11px;
 }

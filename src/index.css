@@ -2,11 +2,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+}
+body {
+  font-family: var(--poppins);
 }
 :root {
-  --sora: 'Sora', sans-serif;
-  --poppins: 'Poppins', sans-serif;
+  --sora: "Sora", sans-serif;
+  --poppins: "Poppins", sans-serif;
+}
+h1 {
+  font-family: var(--sora);
+  font-weight: bolder;
+  font-size: 34px;
+  color: #222222;
 }
 a:link,
 a:active,
@@ -26,4 +34,10 @@ label {
   top: 10px !important;
   left: 50% !important;
   transform: translate(-50%, 0%) !important;
+}
+.active {
+  color: #407bff !important;
+}
+.active svg path {
+  fill: #407bff;
 }

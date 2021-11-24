@@ -70,6 +70,14 @@ export const registerNewRider = async (data) => {
   return response;
 };
 
-export const formatMoney = (n) => {
-  return n?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+export const getRiderInfo = async () => {
+  const response = await axios({
+    method: "GET",
+    url: `${baseUrl}/host/auth/dashboard`,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return response;
 };
