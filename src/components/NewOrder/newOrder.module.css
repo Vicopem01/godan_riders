@@ -35,9 +35,7 @@
   padding: 18px 12px 12px 30px;
 }
 .places {
-  text-align: right;
-}
-.places p:first-of-type {
+  text-align: left;
 }
 .places p:last-of-type,
 .description {

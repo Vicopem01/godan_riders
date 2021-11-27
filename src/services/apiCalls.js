@@ -81,3 +81,15 @@ export const getRiderInfo = async () => {
   });
   return response;
 };
+
+export const getRiderOrderHistory = async () => {
+  const response = await axios({
+    method: "GET",
+    url: `${baseUrl}/host/auth/booking-history`,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return response;
+};

@@ -22,7 +22,6 @@ const Deliveries = ({ history }) => {
   useEffect(async () => {
     try {
       const res = await getRiderInfo();
-      console.log(res.data.dataInfo.getRiderInfo);
       setData(res.data.dataInfo.getRiderInfo);
     } catch (error) {
       toast.error(
