@@ -51,6 +51,7 @@ const Deliveries = ({ history }) => {
           arrow={<ForwardArrowDark />}
         />
         <Links
+          to="/profile-info"
           text="Profile Information"
           svg={<User />}
           arrow={<ForwardArrowDark />}
@@ -67,6 +68,7 @@ const Deliveries = ({ history }) => {
         />
         <Links
           text="Privacy Policy"
+          to="/privacy-policy"
           svg={<Policy />}
           arrow={<ForwardArrowDark />}
         />

@@ -1,14 +1,15 @@
 import classes from "./links.module.css";
+import { Link } from "react-router-dom";
 
-const Links = ({ text, svg, arrow, onClick }) => {
+const Links = ({ text, svg, arrow, onClick, to }) => {
   return (
-    <div className={classes.main} onClick={onClick}>
+    <Link className={classes.main} onClick={onClick} to={to}>
       {svg}
       <div>
         <p>{text}</p>
         {arrow}
       </div>
-    </div>
+    </Link>
   );
 };
 export default Links;

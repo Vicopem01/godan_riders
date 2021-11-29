@@ -7,7 +7,9 @@ import {
 } from "react-router-dom";
 import Bookings from "././pages/Bookings/bookings";
 import Profile from "./pages/Profile/profile";
+import ProfileInfo from "./pages/ProfileInfo/info";
 import Login from "./pages/Login/login";
+import Policy from "./pages/Policy/policy";
 import History from "./pages/History/history";
 import { createAutoLogout } from "./services/createAutoLogout";
 import { useEffect } from "react";
@@ -30,6 +32,8 @@ const App = ({ history }) => {
         <ProtectedRoute path="/rides" exact component={Bookings} />
         <ProtectedRoute path="/history" exact component={History} />
         <ProtectedRoute path="/profile" exact component={Profile} />
+        <ProtectedRoute path="/profile-info" exact component={ProfileInfo} />
+        <ProtectedRoute path="/privacy-policy" exact component={Policy} />
         <Route path="/login" exact component={Login} />
         {/* <Route path="/history" exact component={History} /> */}
       </Switch>

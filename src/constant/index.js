@@ -112,6 +112,7 @@ export const ForwardArrowDark = () => (
     />
   </svg>
 );
+
 export const Distance = () => (
   <svg
     width="10"
