@@ -11,6 +11,7 @@ import ProfileInfo from "./pages/ProfileInfo/info";
 import Login from "./pages/Login/login";
 import Policy from "./pages/Policy/policy";
 import History from "./pages/History/history";
+import BookingDetails from "./pages/BookingDetails/details";
 import { createAutoLogout } from "./services/createAutoLogout";
 import { useEffect } from "react";
 
@@ -34,8 +35,12 @@ const App = ({ history }) => {
         <ProtectedRoute path="/profile" exact component={Profile} />
         <ProtectedRoute path="/profile-info" exact component={ProfileInfo} />
         <ProtectedRoute path="/privacy-policy" exact component={Policy} />
+        <ProtectedRoute
+          path="/order-info/:id"
+          exact
+          component={BookingDetails}
+        />
         <Route path="/login" exact component={Login} />
-        {/* <Route path="/history" exact component={History} /> */}
       </Switch>
     </>
   );

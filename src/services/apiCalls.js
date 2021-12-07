@@ -13,63 +13,6 @@ export const login = async (data) => {
   return res;
 };
 
-export const adminDashboard = async () => {
-  console.log("wiat");
-  const response = await axios({
-    method: "GET",
-    url: `${baseUrl}/admin/auth/aggregates?limit=10&page=1`,
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  });
-  return response;
-};
-
-export const getRiderAccounts = async (page) => {
-  const res = await axios({
-    method: "GET",
-    url: `${baseUrl}/admin/auth/riders-info?page=${page}&limit=10`,
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  });
-  return res;
-};
-export const getUserAccounts = async (page) => {
-  const res = await axios({
-    method: "GET",
-    url: `${baseUrl}/admin/auth/riders-info?page=${page}&limit=10`,
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  });
-  return res;
-};
-
-export const getSingleRiderInfo = async (id) => {
-  const res = await axios({
-    method: "GET",
-    url: `${baseUrl}/admin/auth/rider-info/${id}`,
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  });
-  return res;
-};
-
-export const registerNewRider = async (data) => {
-  const response = await axios({
-    method: "POST",
-    url: `${baseUrl}/admin/auth/register-rider`,
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "multipart/form-data",
-    },
-    body: data,
-  });
-  return response;
-};
-
 export const getRiderInfo = async () => {
   const response = await axios({
     method: "GET",
@@ -85,7 +28,55 @@ export const getRiderInfo = async () => {
 export const getRiderOrderHistory = async () => {
   const response = await axios({
     method: "GET",
-    url: `${baseUrl}/host/auth/booking-history`,
+    url: `${baseUrl}/host/auth/order-history`,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return response;
+};
+
+export const getRiderPendingOrder = async () => {
+  const response = await axios({
+    method: "GET",
+    url: `${baseUrl}/host/auth/get-pending-orders`,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return response;
+};
+
+export const getSinglePendingOrder = async (id) => {
+  const response = await axios({
+    method: "GET",
+    url: `${baseUrl}/host/auth/get-single-pending-order/${id}`,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return response;
+};
+
+export const approveOrder = async (orderId) => {
+  const response = await axios({
+    method: "PUT",
+    url: `${baseUrl}/host/auth/approve-booking/${orderId}`,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return response;
+};
+
+export const declineOrder = async (orderId) => {
+  const response = await axios({
+    method: "PUT",
+    url: `${baseUrl}/host/auth/decline-booking/${orderId}`,
     headers: {
       accept: "application/json",
       Authorization: `Bearer ${localStorage.getItem("token")}`,

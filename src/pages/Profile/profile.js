@@ -10,12 +10,11 @@ import {
   Policy,
   Shield,
 } from "../../constant";
-import Avatar from "../../assets/Avatar.png";
 import { logout } from "../../services/functions";
 import { getRiderInfo } from "../../services/apiCalls";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import ToastMessage from "../../components/Toast/toast";
+import Toast from "../../components/Toast/toast";
 
 const Deliveries = ({ history }) => {
   const [data, setData] = useState({});
@@ -24,12 +23,18 @@ const Deliveries = ({ history }) => {
       const res = await getRiderInfo();
       setData(res.data.dataInfo.getRiderInfo);
     } catch (error) {
-      toast.error(
-        <ToastMessage
-          text="Error fetching information"
-          message={error.message}
-        />
-      );
+      if (error.response) {
+        toast.error(
+          <Toast
+            text="Error getting data"
+            message={error.response.data.message}
+          />
+        );
+      } else {
+        toast.error(
+          <Toast text="Error getting data" message={error.message} />
+        );
+      }
     }
   }, []);
   return (
@@ -46,14 +51,14 @@ const Deliveries = ({ history }) => {
       </div>
       <div className={classes.links}>
         <Links
-          text="Earnings"
-          svg={<Earnings />}
-          arrow={<ForwardArrowDark />}
-        />
-        <Links
           to="/profile-info"
           text="Profile Information"
           svg={<User />}
+          arrow={<ForwardArrowDark />}
+        />
+        <Links
+          text="Earnings"
+          svg={<Earnings />}
           arrow={<ForwardArrowDark />}
         />
         {/* <Links

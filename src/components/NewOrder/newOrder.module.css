@@ -21,12 +21,11 @@
 }
 .subContainer {
   border-radius: 0px 0px 10px 10px;
-
   background: #f9fafc;
 }
 .subContainer svg {
   position: absolute;
-  bottom: 33px;
+  bottom: 10px;
   left: 10px;
 }
 .subContainer > div {

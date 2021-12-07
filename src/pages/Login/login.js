@@ -45,6 +45,7 @@ const Login = ({ history }) => {
             setLoader(true);
             const res = await login(data);
             localStorage.setItem("token", res.data.data.token);
+            localStorage.setItem("_id", res.data.data.hostId);
             history.push("/");
           } catch (error) {
             setLoader(false);
