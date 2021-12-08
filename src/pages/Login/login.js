@@ -9,9 +9,11 @@ import { login } from "../../services/apiCalls";
 import Logo from "../../assets/images/authentication/godan_logo.svg";
 import Mail from "../../assets/images/authentication/mail.svg";
 import Padlock from "../../assets/images/authentication/padlock.svg";
+import Onboarding from "../../components/Onboarding/onboarding";
 
 const Login = ({ history }) => {
   const [loader, setLoader] = useState(false);
+  const [board, setBoard] = useState(true);
   const [mail, setMail] = useState("");
   const [pass, setPass] = useState("");
   useEffect(() => {
@@ -56,50 +58,55 @@ const Login = ({ history }) => {
     }
   };
   return (
-    <main className={classes.main}>
-      <div>
-        <div className="medium-padding center-flex">
-          <img className="" src={Logo} alt="Logo" />
-        </div>
-        <div className="small-margin">
-          <p className="medium-text  medium-weight">Welcome Back</p>
-          <p className="medium-text">Login your Godan account</p>
-        </div>
-        <form className="medium-padding">
-          <label htmlFor="email" className={classes.flexLabel}>
-            <img src={Mail} alt="e-mail" />
-            <span></span>
-            <input
-              type="email"
-              placeholder="E-Mail"
-              id="email"
-              onChange={(e) => setMail(e.target.value)}
-            />
-          </label>
-          <label htmlFor="password" className={classes.flexLabel}>
-            <img src={Padlock} alt="password" />
-            <span></span>
-            <input
-              type="password"
-              placeholder="Password"
-              id="password"
-              onChange={(e) => setPass(e.target.value)}
-            />
-          </label>
-          <ButtonWhite onClick={handleLogin} className="center-flex">
-            {loader ? <Loader /> : "Login"}
-          </ButtonWhite>
-          {/* <div className={classes.line}>
+    <main>
+      {board && <Onboarding onClick={() => setBoard(false)} />}
+      {!board && (
+        <div className={classes.main}>
+          <div>
+            <div className="medium-padding center-flex">
+              <img className="" src={Logo} alt="Logo" />
+            </div>
+            <div className="small-margin">
+              <p className="medium-text  medium-weight">Welcome Back</p>
+              <p className="medium-text">Login your Godan account</p>
+            </div>
+            <form className="medium-padding">
+              <label htmlFor="email" className={classes.flexLabel}>
+                <img src={Mail} alt="e-mail" />
+                <span></span>
+                <input
+                  type="email"
+                  placeholder="E-Mail"
+                  id="email"
+                  onChange={(e) => setMail(e.target.value)}
+                />
+              </label>
+              <label htmlFor="password" className={classes.flexLabel}>
+                <img src={Padlock} alt="password" />
+                <span></span>
+                <input
+                  type="password"
+                  placeholder="Password"
+                  id="password"
+                  onChange={(e) => setPass(e.target.value)}
+                />
+              </label>
+              <ButtonWhite onClick={handleLogin} className="center-flex">
+                {loader ? <Loader /> : "Login"}
+              </ButtonWhite>
+              {/* <div className={classes.line}>
             <span></span>
             <p>or</p>
             <span></span>
           </div>
           <button className={classes.google}>Sign up with Google</button> */}
-          {/* <p className="small-text center-text medium-margin">
+              {/* <p className="small-text center-text medium-margin">
             Don't have an account? <Link to="/register">Create Account</Link>
           </p> */}
-        </form>
-      </div>
+            </form>
+          </div>
+        </div>
+      )}
     </main>
   );
 };

@@ -1,8 +1,15 @@
 .main {
-  background: #407bff;
+  background: url("../../assets/images/landing/bg.png");
+  background-size: 120%;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #fff;
   width: 100vw;
   height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 .main > div {
   margin: 0px auto 8rem auto;

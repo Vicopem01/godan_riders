@@ -41,3 +41,9 @@ label {
 .active svg path {
   fill: #407bff;
 }
+.first {
+  color: #505dd1;
+}
+.second {
+  color: #f94d53;
+}

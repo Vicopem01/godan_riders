@@ -11,6 +11,26 @@ import Loader from "../../components/Loader/loader";
 const Deliveries = () => {
   const [data, setData] = useState([]);
   const [load, setLoad] = useState(false);
+  const time = () => {
+    try {
+      setInterval(async function () {
+        const res = await getRiderPendingOrder();
+        console.log(res.data);
+        setData([...data, ...res.data]);
+      }, 5000);
+    } catch (error) {
+      error.response
+        ? toast.error(
+            <ToastMessage
+              text="Error getting orders"
+              message={error.response.data.message}
+            />
+          )
+        : toast.error(
+            <ToastMessage text="Error getting orders" message={error.message} />
+          );
+    }
+  };
   useEffect(async () => {
     setLoad(true);
     try {
@@ -18,6 +38,7 @@ const Deliveries = () => {
       console.log(res.data);
       setData(res.data);
       setLoad(false);
+      time();
     } catch (error) {
       error.response
         ? toast.error(
@@ -32,29 +53,6 @@ const Deliveries = () => {
       setLoad(false);
     }
   }, []);
-  const time = async () => {
-    setInterval(function () {
-      try {
-        const res = getRiderPendingOrder();
-        console.log(res.data);
-        setData([...data, ...res.data]);
-      } catch (error) {
-        error.response
-          ? toast.error(
-              <ToastMessage
-                text="Error getting orders"
-                message={error.response.data.message}
-              />
-            )
-          : toast.error(
-              <ToastMessage
-                text="Error getting orders"
-                message={error.message}
-              />
-            );
-      }
-    }, 5000);
-  };
   return (
     <div className={classes.container}>
       {load && <Loader />}
