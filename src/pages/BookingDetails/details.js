@@ -21,6 +21,7 @@ const Details = ({ history }) => {
   let { id } = useParams();
   const [popup, setpopup] = useState(false);
   const [load, setLoad] = useState(false);
+  const [userInfo, showUserInfo] = useState(false);
   const [cancel, setCancel] = useState(false);
   const [data, setData] = useState({});
   useEffect(async () => {
@@ -52,6 +53,7 @@ const Details = ({ history }) => {
       const res = await approveOrder(id);
       console.log(res);
       setLoad(false);
+      showUserInfo(true);
     } catch (error) {
       error.response
         ? toast.error(
@@ -74,20 +76,21 @@ const Details = ({ history }) => {
       const res = await declineOrder(id);
       console.log(res);
       setLoad(false);
+      showUserInfo(true);
     } catch (error) {
       error.response
-      ? toast.error(
-        <ToastMessage
-        text="Error getting orders"
-        message={error.response.data.message}
-        />
-        )
+        ? toast.error(
+            <ToastMessage
+              text="Error getting orders"
+              message={error.response.data.message}
+            />
+          )
         : toast.error(
-          <ToastMessage text="Error getting orders" message={error.message} />
+            <ToastMessage text="Error getting orders" message={error.message} />
           );
-        }
-        setLoad(false);
-        setCancel(false);
+    }
+    setLoad(false);
+    setCancel(false);
   };
 
   return (
@@ -118,7 +121,6 @@ const Details = ({ history }) => {
                     {data?.bookingId?.startDestination}
                   </p>
                   <p>
-                    {" "}
                     {new Date(data?.createdAt).toLocaleString("en-US", {
                       day: "2-digit",
                       month: "short",
@@ -135,11 +137,21 @@ const Details = ({ history }) => {
                   <p className="small-text">
                     {data?.bookingId?.endDestination}
                   </p>
-                  <p>No 4, ijebu ode starttet</p>
+                  <p></p>
+                  {/* <p>No 4, ijebu ode starttet</p> */}
                 </div>
                 <p className={classes.description}>to</p>
               </div>
             </div>
+            {userInfo && (
+              <div className={classes.subContainer}>
+                <p>Customer Information</p>
+                <div className={classes.userInfo}>
+                  <p>{data?.bookerDetails?.fullName}</p>
+                  <p>{data?.bookerDetails?.phoneNumber}</p>
+                </div>
+              </div>
+            )}
             <div className={classes.subContainer}>
               <p>Price Breakdown</p>
               <div className={classes.places}>
@@ -148,10 +160,12 @@ const Details = ({ history }) => {
               </div>
             </div>
           </div>
-          <div className={classes.btn}>
-            <button onClick={() => setCancel(true)}>Decline order </button>
-            <button onClick={approveNewOrder}>Accept Order </button>
-          </div>
+          {!userInfo && (
+            <div className={classes.btn}>
+              <button onClick={() => setCancel(true)}>Decline order </button>
+              <button onClick={approveNewOrder}>Accept Order </button>
+            </div>
+          )}
         </div>
       )}
       {popup && <Cancel setPopup={setpopup} />}

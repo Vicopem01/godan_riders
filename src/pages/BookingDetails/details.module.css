@@ -20,14 +20,18 @@
 }
 .subContainer svg {
   position: absolute;
-  top : 28px;
+  top: 28px;
   left: 10px;
 }
-.subContainer > div,
-.subContainer > p {
+.subContainer > div {
   display: flex;
   justify-content: space-between;
   padding: 18px 12px 12px 30px;
+}
+.subContainer > p {
+  padding: 18px 12px 0px 30px;
+  color: #111111;
+  font-size: 18px;
 }
 .places {
   text-align: left;
@@ -36,6 +40,9 @@
 .description {
   color: #787676;
   font-size: 14px;
+}
+.userInfo p:last-of-type {
+  color: #407bff;
 }
 .btn {
   display: flex;

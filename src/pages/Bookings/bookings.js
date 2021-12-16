@@ -7,17 +7,16 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import ToastMessage from "../../components/Toast/toast";
 import Loader from "../../components/Loader/loader";
+import Filter from "../../assets/images/booking/filter.svg";
 
 const Deliveries = () => {
   const [data, setData] = useState([]);
   const [load, setLoad] = useState(false);
-  const time = () => {
+  const getOrder = async () => {
     try {
-      setInterval(async function () {
-        const res = await getRiderPendingOrder();
-        console.log(res.data);
-        setData([...data, ...res.data]);
-      }, 5000);
+      const res = await getRiderPendingOrder();
+      console.log(res.data);
+      setData([...data, ...res.data]);
     } catch (error) {
       error.response
         ? toast.error(
@@ -30,6 +29,11 @@ const Deliveries = () => {
             <ToastMessage text="Error getting orders" message={error.message} />
           );
     }
+  };
+  const time = () => {
+    setInterval(function () {
+      getOrder();
+    }, 8000);
   };
   useEffect(async () => {
     setLoad(true);
@@ -56,10 +60,17 @@ const Deliveries = () => {
   return (
     <div className={classes.container}>
       {load && <Loader />}
-      <h1>Bookings</h1>
+      <h1>Rides</h1>
       <div className={classes.texts}>
-        <p onClick={time}>Today</p>
-        <span>Sort: Suggested</span>
+        <p>Pending rides</p>
+        <span>
+          Filter <img src={Filter} alt="" />
+        </span>
+        <ul>
+          <li>Pending rides</li>
+          <li>In progress</li>
+          <li></li>
+        </ul>
       </div>
       {data.length < 1 && !load && <Empty text="You currently have no order" />}
       <div>

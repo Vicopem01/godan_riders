@@ -6,14 +6,22 @@
 .texts {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 10px 0;
 }
-.texts p{
-    font-weight: 500;
+.texts p {
+  font-weight: 500;
+  font-size: 18px;
 }
-.texts span{
-    font-weight: 300;
-    font-size: 13px;
+.texts span img {
+  margin: 0 10px;
+}
+.texts span {
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
 }
 .container h1 {
   margin: 20px 0;

@@ -26,6 +26,6 @@
 .info p:last-of-type {
   font-weight: bold;
 }
-.links > div:last-of-type p {
+.links > a:last-of-type p {
   color: #ef2a52;
 }

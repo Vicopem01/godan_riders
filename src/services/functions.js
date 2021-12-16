@@ -14,6 +14,7 @@ export const extractNumber = (n) => {
 };
 export const logout = (history) => {
   localStorage.clear();
+  sessionStorage.clear();
   history.push("/login");
 };
 
