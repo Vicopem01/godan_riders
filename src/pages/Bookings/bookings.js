@@ -8,10 +8,12 @@ import { toast } from "react-toastify";
 import ToastMessage from "../../components/Toast/toast";
 import Loader from "../../components/Loader/loader";
 import Filter from "../../assets/images/booking/filter.svg";
+import OutsideClickHandler from "react-outside-click-handler";
 
 const Deliveries = () => {
   const [data, setData] = useState([]);
   const [load, setLoad] = useState(false);
+  const [options, setOptions] = useState(false);
   const getOrder = async () => {
     try {
       const res = await getRiderPendingOrder();
@@ -63,20 +65,31 @@ const Deliveries = () => {
       <h1>Rides</h1>
       <div className={classes.texts}>
         <p>Pending rides</p>
-        <span>
-          Filter <img src={Filter} alt="" />
+        <span onClick={() => setOptions(true)}>
+          <img src={Filter} alt="" />
         </span>
-        <ul>
-          <li>Pending rides</li>
-          <li>In progress</li>
-          <li></li>
-        </ul>
-      </div>
+        </div>
+        {options && (
+          <OutsideClickHandler
+            onOutsideClick={() => {
+              setOptions(false);
+            }}
+          >
+            <ul className={classes.list}>
+              <li>Pending</li>
+              <span></span>
+              <li>In-Progress</li>
+              <span></span>
+              <li>All</li>
+            </ul>
+          </OutsideClickHandler>
+        )}
       {data.length < 1 && !load && <Empty text="You currently have no order" />}
       <div>
-        {data?.map((item, index) => (
-          <NewOrder key={index} {...item.bookingId} _id={item._id} />
-        ))}
+        {data.length > 0 &&
+          data?.map((item, index) => (
+            <NewOrder key={index} {...item.bookingId} _id={item._id} />
+          ))}
       </div>
       <NavBar />
     </div>

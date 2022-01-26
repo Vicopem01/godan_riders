@@ -10,6 +10,7 @@ import Profile from "./pages/Profile/profile";
 import ProfileInfo from "./pages/ProfileInfo/info";
 import Login from "./pages/Login/login";
 import Policy from "./pages/Policy/policy";
+import AboutUs from "./pages/AboutUs/about";
 import History from "./pages/History/history";
 import BookingDetails from "./pages/BookingDetails/details";
 import { createAutoLogout } from "./services/createAutoLogout";
@@ -35,6 +36,7 @@ const App = ({ history }) => {
         <ProtectedRoute path="/profile" exact component={Profile} />
         <ProtectedRoute path="/profile-info" exact component={ProfileInfo} />
         <ProtectedRoute path="/privacy-policy" exact component={Policy} />
+        <ProtectedRoute path="/about-us" exact component={AboutUs} />
         <ProtectedRoute
           path="/order-info/:id"
           exact

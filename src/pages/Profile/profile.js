@@ -8,7 +8,7 @@ import {
   Noitification,
   ForwardArrowDark,
   Policy,
-  Shield,
+  About,
 } from "../../constant";
 import { logout } from "../../services/functions";
 import { getRiderInfo } from "../../services/apiCalls";
@@ -61,11 +61,6 @@ const Deliveries = ({ history }) => {
           svg={<Earnings />}
           arrow={<ForwardArrowDark />}
         />
-        {/* <Links
-          text="Vehicle Information"
-          svg={<Vehicle />}
-          arrow={<ForwardArrowDark />}
-        /> */}
         <Links
           text="New Updates"
           svg={<Noitification />}
@@ -77,7 +72,12 @@ const Deliveries = ({ history }) => {
           svg={<Policy />}
           arrow={<ForwardArrowDark />}
         />
-        <Links text="Site Map" svg={<Shield />} arrow={<ForwardArrowDark />} />
+        <Links
+          text="About Us"
+          to="/about-us"
+          svg={<About />}
+          arrow={<ForwardArrowDark />}
+        />
         <Links
           text="Sign Out"
           svg={<SignOut />}

@@ -21,7 +21,6 @@ const Details = ({ history }) => {
   let { id } = useParams();
   const [popup, setpopup] = useState(false);
   const [load, setLoad] = useState(false);
-  const [userInfo, showUserInfo] = useState(false);
   const [cancel, setCancel] = useState(false);
   const [data, setData] = useState({});
   useEffect(async () => {
@@ -53,7 +52,6 @@ const Details = ({ history }) => {
       const res = await approveOrder(id);
       console.log(res);
       setLoad(false);
-      showUserInfo(true);
     } catch (error) {
       error.response
         ? toast.error(
@@ -76,7 +74,6 @@ const Details = ({ history }) => {
       const res = await declineOrder(id);
       console.log(res);
       setLoad(false);
-      showUserInfo(true);
     } catch (error) {
       error.response
         ? toast.error(
@@ -143,12 +140,12 @@ const Details = ({ history }) => {
                 <p className={classes.description}>to</p>
               </div>
             </div>
-            {userInfo && (
+            {data?.deliveryStatus==="Awaiting-Pickup" && (
               <div className={classes.subContainer}>
                 <p>Customer Information</p>
                 <div className={classes.userInfo}>
                   <p>{data?.bookerDetails?.fullName}</p>
-                  <p>{data?.bookerDetails?.phoneNumber}</p>
+                  <p><a href={`mailto${data?.bookerDetails.phoneNumber}`}>{data?.bookerDetails?.phoneNumber}</a></p>
                 </div>
               </div>
             )}
@@ -160,7 +157,7 @@ const Details = ({ history }) => {
               </div>
             </div>
           </div>
-          {!userInfo && (
+          {data?.deliveryStatus==="Pending" && (
             <div className={classes.btn}>
               <button onClick={() => setCancel(true)}>Decline order </button>
               <button onClick={approveNewOrder}>Accept Order </button>

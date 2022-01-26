@@ -51,7 +51,16 @@ const Login = ({ history }) => {
             history.push("/");
           } catch (error) {
             setLoader(false);
-            toast.error(<ToastMessage text="Error" message={error.message} />);
+            error.response
+            ? toast.error(
+                <ToastMessage
+                  text="Error getting orders"
+                  message={error.response.data.message}
+                />
+              )
+            : toast.error(
+                <ToastMessage text="Error getting orders" message={error.message} />
+              );
           }
         }
       }
