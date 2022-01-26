@@ -51,7 +51,7 @@ const Details = ({ history }) => {
     try {
       const res = await approveOrder(id);
       console.log(res);
-      setLoad(false);
+      window.location.reload();
     } catch (error) {
       error.response
         ? toast.error(
@@ -140,12 +140,16 @@ const Details = ({ history }) => {
                 <p className={classes.description}>to</p>
               </div>
             </div>
-            {data?.deliveryStatus==="Awaiting-Pickup" && (
+            {data?.deliveryStatus === "Awaiting-Pickup" && (
               <div className={classes.subContainer}>
                 <p>Customer Information</p>
                 <div className={classes.userInfo}>
                   <p>{data?.bookerDetails?.fullName}</p>
-                  <p><a href={`mailto${data?.bookerDetails.phoneNumber}`}>{data?.bookerDetails?.phoneNumber}</a></p>
+                  <p>
+                    <a href={`mailto${data?.bookerDetails.phoneNumber}`}>
+                      {data?.bookerDetails?.phoneNumber}
+                    </a>
+                  </p>
                 </div>
               </div>
             )}
@@ -157,7 +161,7 @@ const Details = ({ history }) => {
               </div>
             </div>
           </div>
-          {data?.deliveryStatus==="Pending" && (
+          {data?.deliveryStatus === "Pending" && (
             <div className={classes.btn}>
               <button onClick={() => setCancel(true)}>Decline order </button>
               <button onClick={approveNewOrder}>Accept Order </button>
