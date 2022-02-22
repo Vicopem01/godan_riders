@@ -49,6 +49,30 @@ export const getRiderPendingOrder = async () => {
   return response;
 };
 
+export const getRiderActiveOrder = async () => {
+  const response = await axios({
+    method: "GET",
+    url: `${baseUrl}/host/auth/get-in-transit-orders`,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return response;
+};
+
+export const getRiderAllOrder = async () => {
+  const response = await axios({
+    method: "GET",
+    url: `${baseUrl}/host/auth/awaiting-orders`,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return response;
+};
+
 export const getSinglePendingOrder = async (id) => {
   const response = await axios({
     method: "GET",

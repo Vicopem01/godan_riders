@@ -2,7 +2,7 @@ import classes from "./bookings.module.css";
 import NavBar from "../../components/UI/NavBar/navbar";
 import NewOrder from "../../components/NewOrder/newOrder";
 import Empty from "../../components/EmptyState/empty";
-import { getRiderPendingOrder } from "../../services/apiCalls";
+import { getRiderAllOrder } from "../../services/apiCalls";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import ToastMessage from "../../components/Toast/toast";
@@ -16,7 +16,7 @@ const Deliveries = ({ history }) => {
   const [options, setOptions] = useState(false);
   const getOrder = async () => {
     try {
-      const res = await getRiderPendingOrder();
+      const res = await getRiderAllOrder();
       console.log(res.data);
       setData([...data, ...res.data]);
     } catch (error) {
@@ -32,15 +32,16 @@ const Deliveries = ({ history }) => {
           );
     }
   };
-  const time = () => {
+
+  const time = () =>
     setInterval(function () {
       getOrder();
     }, 8000);
-  };
+
   useEffect(async () => {
     setLoad(true);
     try {
-      const res = await getRiderPendingOrder();
+      const res = await getRiderAllOrder();
       console.log(res.data);
       setData(res.data);
       setLoad(false);
@@ -64,7 +65,7 @@ const Deliveries = ({ history }) => {
       {load && <Loader />}
       <h1>Rides</h1>
       <div className={classes.texts}>
-        <p>Pending rides</p>
+        <p>All Rides</p>
         <span onClick={() => setOptions(true)}>
           <img src={Filter} alt="" />
         </span>
@@ -76,11 +77,11 @@ const Deliveries = ({ history }) => {
           }}
         >
           <ul className={classes.list}>
-            <li onClick={() => window.location.reload()}>Pending</li>
+            <li onClick={() => history.push("/rides")}>Pending</li>
             <span></span>
             <li onClick={() => history.push("/current-rides")}>In-Progress</li>
             <span></span>
-            <li onClick={() => history.push("/all-rides")}>All</li>
+            <li onClick={() => window.location.reload()}>All</li>
           </ul>
         </OutsideClickHandler>
       )}

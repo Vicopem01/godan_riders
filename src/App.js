@@ -6,6 +6,8 @@ import {
   withRouter,
 } from "react-router-dom";
 import Bookings from "././pages/Bookings/bookings";
+import AllBookings from "././pages/Bookings/allBookings";
+import PendingBookings from "././pages/Bookings/pendingBookings";
 import Profile from "./pages/Profile/profile";
 import ProfileInfo from "./pages/ProfileInfo/info";
 import Login from "./pages/Login/login";
@@ -32,6 +34,12 @@ const App = ({ history }) => {
     <>
       <Switch>
         <ProtectedRoute path="/rides" exact component={Bookings} />
+        <ProtectedRoute path="/all-rides" exact component={AllBookings} />
+        <ProtectedRoute
+          path="/current-rides"
+          exact
+          component={PendingBookings}
+        />
         <ProtectedRoute path="/history" exact component={History} />
         <ProtectedRoute path="/profile" exact component={Profile} />
         <ProtectedRoute path="/profile-info" exact component={ProfileInfo} />
