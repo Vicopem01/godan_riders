@@ -90,6 +90,7 @@ const Login = ({ history }) => {
                   onChange={(e) => setMail(e.target.value)}
                 />
               </label>
+              <br/>
               <label htmlFor="password" className={classes.flexLabel}>
                 <img src={Padlock} alt="password" />
                 <span></span>

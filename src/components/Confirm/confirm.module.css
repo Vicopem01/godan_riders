@@ -1,0 +1,46 @@
+.bg {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 98vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  overflow: hidden;
+}
+.sub {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+  border-radius: 15px 15px 0 0;
+  padding: 2rem;
+  text-align: center;
+}
+.sub p {
+  font-weight: 500;
+  font-size: 18px;
+}
+.btn {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 85%;
+  margin: 30px auto auto auto;
+}
+.btn button {
+  width: 45%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+}
+.btn button:last-of-type {
+  background: rgba(252, 33, 33, 0.15);
+  color: #fc2121;
+}
+.btn button:first-of-type {
+  color: #39d176;
+  background: rgba(57, 209, 118, 0.15);
+}

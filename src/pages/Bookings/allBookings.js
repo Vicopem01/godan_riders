@@ -17,7 +17,6 @@ const Deliveries = ({ history }) => {
   const getOrder = async () => {
     try {
       const res = await getRiderAllOrder();
-      console.log(res.data);
       setData([...data, ...res.data]);
     } catch (error) {
       error.response
@@ -42,7 +41,6 @@ const Deliveries = ({ history }) => {
     setLoad(true);
     try {
       const res = await getRiderAllOrder();
-      console.log(res.data);
       setData(res.data);
       setLoad(false);
       time();

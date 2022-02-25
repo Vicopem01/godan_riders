@@ -49,7 +49,7 @@ export const getRiderPendingOrder = async () => {
   return response;
 };
 
-export const getRiderActiveOrder = async () => {
+export const getRiderTransitOrder = async () => {
   const response = await axios({
     method: "GET",
     url: `${baseUrl}/host/auth/get-in-transit-orders`,
@@ -89,6 +89,18 @@ export const approveOrder = async (orderId) => {
   const response = await axios({
     method: "PUT",
     url: `${baseUrl}/host/auth/approve-booking/${orderId}`,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return response;
+};
+
+export const confirmDelivery = async (orderId) => {
+  const response = await axios({
+    method: "PUT",
+    url: `${baseUrl}/host/auth/confirm/deliveries/${orderId}`,
     headers: {
       accept: "application/json",
       Authorization: `Bearer ${localStorage.getItem("token")}`,

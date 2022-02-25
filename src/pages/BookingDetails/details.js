@@ -7,19 +7,21 @@ import {
   getSinglePendingOrder,
   approveOrder,
   declineOrder,
+  confirmDelivery,
 } from "../../services/apiCalls";
 import { Distance } from "../../constant";
 import Cancel from "../../components/Cancel/cancel";
+import Confirm from "../../components/Confirm/confirm";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import ToastMessage from "../../components/Toast/toast";
 import { useParams } from "react-router-dom";
 import Loader from "../../components/Loader/loader";
-// import Cancel from "../../components/Cancel/cancel";
 
 const Details = ({ history }) => {
   let { id } = useParams();
   const [popup, setpopup] = useState(false);
+  const [confirm, setConfirm] = useState(false);
   const [load, setLoad] = useState(false);
   const [cancel, setCancel] = useState(false);
   const [data, setData] = useState({});
@@ -88,6 +90,27 @@ const Details = ({ history }) => {
     }
     setLoad(false);
     setCancel(false);
+  };
+
+  const clickConfirm = async () => {
+    setLoad(true);
+    try {
+      const res = await confirmDelivery(id);
+      setLoad(false);
+      history.push("/success");
+    } catch (error) {
+      setLoad(false);
+      error.response
+        ? toast.error(
+            <ToastMessage
+              text="Error getting orders"
+              message={error.response.data.message}
+            />
+          )
+        : toast.error(
+            <ToastMessage text="Error getting orders" message={error.message} />
+          );
+    }
   };
 
   return (
@@ -161,6 +184,11 @@ const Details = ({ history }) => {
               </div>
             </div>
           </div>
+          {data?.deliveryStatus === "Awaiting-Pickup" && (
+            <div className={classes.confirm}>
+              <button onClick={() => setConfirm(true)}>Confirm Delivery</button>
+            </div>
+          )}
           {data?.deliveryStatus === "Pending" && (
             <div className={classes.btn}>
               <button onClick={() => setCancel(true)}>Decline order </button>
@@ -168,6 +196,9 @@ const Details = ({ history }) => {
             </div>
           )}
         </div>
+      )}
+      {confirm && (
+        <Confirm cancel={() => setConfirm(false)} clickConfirm={clickConfirm} />
       )}
       {popup && <Cancel setPopup={setpopup} />}
     </div>

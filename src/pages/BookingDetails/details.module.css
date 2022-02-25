@@ -63,3 +63,14 @@
 .btn button:last-of-type {
   background: #407bff;
 }
+.confirm button {
+  display: block;
+  margin: auto auto 2rem auto;
+  width: 70%;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background: #407bff;
+  color: #fff;
+  font-size: 16px;
+}
