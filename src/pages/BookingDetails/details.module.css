@@ -4,6 +4,10 @@
   display: flex;
   justify-content: space-between;
 }
+.flexbox img {
+  width: 25px;
+  height: 25px;
+}
 .overflow {
   border-radius: 20px 20px 0px 0px;
   max-height: 45vh;

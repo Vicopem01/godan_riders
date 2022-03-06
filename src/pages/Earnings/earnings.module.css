@@ -1,0 +1,108 @@
+.main {
+  background: #fafbfb;
+}
+.main > div {
+  width: 85%;
+  margin: auto;
+}
+.top {
+  padding-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.back {
+  width: 35px;
+  height: 35px;
+}
+.avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+.summary {
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+.summary p {
+  color: #9da5ba;
+  margin: 5px 0;
+}
+.summary h2,
+.main h3 {
+  color: #091d60;
+}
+.main h3 {
+  text-align: center;
+}
+div[type="success"] {
+  background: #e4f7f3;
+  color: #08a47d;
+}
+div[type="cancelled"] {
+  background: #ffedec;
+  color: #eb6c63;
+}
+.cards {
+  width: 48%;
+  padding: 2rem 0;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 20px 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.cards img {
+  width: 30px;
+  height: 30px;
+}
+.cards p {
+  margin: 10px 0;
+  font-size: 14px;
+}
+.cards h4 {
+  font-size: 28px;
+}
+.cardContainer {
+  display: flex;
+}
+
+.transactions {
+  position: relative;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 30px 0;
+}
+.transactions p {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 12px;
+}
+.transactions span {
+  color: #9da5ba;
+  padding-right: 1rem;
+}
+.transactions h4 {
+  margin-bottom: 10px;
+  color: #091d60;
+}
+p[type="success"] {
+  color: #08a47d;
+}
+p[type="cancelled"] {
+  color: #eb6c63;
+}
+.showMore {
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: block;
+  width: 150px;
+  text-align: center;
+  margin: 30px auto;
+  padding: 10px;
+  color: #091d60 !important;
+}

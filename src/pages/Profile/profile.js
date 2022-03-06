@@ -60,6 +60,7 @@ const Deliveries = ({ history }) => {
           text="Earnings"
           svg={<Earnings />}
           arrow={<ForwardArrowDark />}
+          to="/earnings"
         />
         <Links
           text="New Updates"
