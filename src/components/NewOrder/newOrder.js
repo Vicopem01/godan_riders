@@ -7,11 +7,12 @@ const NewOrder = ({
   startDestination,
   createdAt,
   _id,
+  amount,
 }) => {
   return (
     <Link className={classes.box} to={`/order-info/${_id}`}>
       <div className={classes.price}>
-        <p> ₦ {(distance / 10)?.toLocaleString()}</p>
+        <p> ₦ {amount?.toLocaleString()}</p>
         <ForwardArrow />
       </div>
       <div className={classes.subContainer}>
@@ -35,7 +36,7 @@ const NewOrder = ({
           <div className={classes.places}>
             <p className="small-text">{endDestination}</p>
             <p></p>
-            {/* <p>No 4, ijebu ode starttet</p> */}
+            <p>Distance : {distance}m</p>
           </div>
           <p className={classes.description}>to</p>
         </div>

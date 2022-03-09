@@ -11,42 +11,21 @@ import {
   About,
 } from "../../constant";
 import { logout } from "../../services/functions";
-import { getRiderInfo } from "../../services/apiCalls";
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import Toast from "../../components/Toast/toast";
+import { useContext } from "react";
+import { RiderInfo } from "../../context/context"
 
 const Deliveries = ({ history }) => {
-  const [data, setData] = useState({});
-  useEffect(async () => {
-    try {
-      const res = await getRiderInfo();
-      setData(res.data.dataInfo.getRiderInfo);
-    } catch (error) {
-      if (error.response) {
-        toast.error(
-          <Toast
-            text="Error getting data"
-            message={error.response.data.message}
-          />
-        );
-      } else {
-        toast.error(
-          <Toast text="Error getting data" message={error.message} />
-        );
-      }
-    }
-  }, []);
+  const { info } = useContext(RiderInfo);
   return (
     <div className={classes.main}>
       <h1>Account</h1>
       <div className={classes.profile}>
         <div className={classes.picture}>
-          <img src={data?.avatar} alt="" />
+          <img src={info?.avatar} alt="" />
         </div>
         <div className={classes.info}>
           <p>Rider Profile</p>
-          <p>{data?.fullName}</p>
+          <p>{info?.fullName}</p>
         </div>
       </div>
       <div className={classes.links}>

@@ -69,40 +69,9 @@ div[type="cancelled"] {
   display: flex;
 }
 
-.transactions {
-  position: relative;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  border-radius: 10px;
-  margin: 30px 0;
-}
-.transactions p {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 12px;
-}
-.transactions span {
-  color: #9da5ba;
-  padding-right: 1rem;
-}
-.transactions h4 {
-  margin-bottom: 10px;
-  color: #091d60;
-}
 p[type="success"] {
   color: #08a47d;
 }
 p[type="cancelled"] {
   color: #eb6c63;
-}
-.showMore {
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  display: block;
-  width: 150px;
-  text-align: center;
-  margin: 30px auto;
-  padding: 10px;
-  color: #091d60 !important;
 }
