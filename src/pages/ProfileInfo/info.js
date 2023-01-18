@@ -8,38 +8,12 @@ import Address from "../../assets/images/profileInfo/address.svg";
 import PlateNumber from "../../assets/images/profileInfo/plateNumber.svg";
 import VehicleDescription from "../../assets/images/profileInfo/vehicleDescription.svg";
 import VehicleCategory from "../../assets/images/profileInfo/vehicleCategory.svg";
-import { getRiderInfo } from "../../services/apiCalls";
-import { useEffect, useState } from "react";
-import Toast from "../../components/Toast/toast";
-import { toast } from "react-toastify";
-import Loader from "../../components/Loader/loader";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { RiderInfo } from "../../context/context";
 
 const Info = ({ history }) => {
-  const [data, setData] = useState({});
-  const [load, setLoad] = useState(true);
-  useEffect(async () => {
-    try {
-      const res = await getRiderInfo();
-      console.log(res.data.dataInfo.getRiderInfo);
-      setData(res.data.dataInfo.getRiderInfo);
-      setLoad(false);
-    } catch (error) {
-      setLoad(false);
-      if (error.response) {
-        toast.error(
-          <Toast
-            text="Error getting data"
-            message={error.response.data.message}
-          />
-        );
-      } else {
-        toast.error(
-          <Toast text="Error getting data" message={error.message} />
-        );
-      }
-    }
-  }, []);
+  const { info } = useContext(RiderInfo);
   return (
     <div className={classes.box}>
       <div className={classes.flexbox}>
@@ -51,44 +25,44 @@ const Info = ({ history }) => {
       </div>
       <div className={`${classes.picture} center-flex medium-margin`}>
         <div>
-          <img src={data.avatar} alt="" />
+          <img src={info.avatar} alt="" />
         </div>
       </div>
       <div className={classes.info}>
         <p>Full Name</p>
         <span>
           <img src={Avatar} alt="" />
-          {data.fullName}
+          {info.fullName}
         </span>
 
         <p>Email Address</p>
         <span>
           <img src={Mail} alt="" />
-          {data.email}
+          {info.email}
         </span>
 
         <p>Phone Number</p>
         <span>
           <img src={Phone} alt="" />
-          {data.phoneNumber}
+          {info.phoneNumber}
         </span>
 
         <p>Home Address</p>
         <span>
           <img src={Address} alt="" />
-          {data.address}
+          {info.address}
         </span>
 
         <p>Vehicle Category</p>
         <span>
           <img src={VehicleCategory} alt="" />
-          {data.vehicleCategory}
+          {info.vehicleCategory}
         </span>
 
         <p>Vehicle Description</p>
         <span>
           <img src={VehicleDescription} alt="" />
-          {data.vehicleDescription}
+          {info.vehicleDescription}
         </span>
 
         <p>Plate Number</p>
@@ -97,7 +71,6 @@ const Info = ({ history }) => {
           Ajao Afeez
         </span>
       </div>
-      {load && <Loader />}
     </div>
   );
 };

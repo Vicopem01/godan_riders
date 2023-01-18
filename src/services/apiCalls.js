@@ -25,6 +25,19 @@ export const getRiderInfo = async () => {
   return response;
 };
 
+export const getSuccessfulEarnings = async () => {
+  const response = await axios({
+    method: "GET",
+    url: `${baseUrl}/host/auth/earnings`,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return response;
+};
+
+
 export const getRiderOrderHistory = async () => {
   const response = await axios({
     method: "GET",

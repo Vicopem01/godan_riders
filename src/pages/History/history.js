@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Toast from "../../components/Toast/toast";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader/loader";
+import Empty from "../../components/EmptyState/empty";
 
 const Deliveries = () => {
   const [data, setData] = useState([]);
@@ -40,11 +41,14 @@ const Deliveries = () => {
         <p>Today</p>
         <span>Sort: Suggested</span>
       </div>
-      <div>
-        {data?.map((item, index) => (
-          <Orders key={index} {...item} />
-        ))}
-      </div>
+      {data.length > 0 && (
+        <div>
+          {data?.map((item, index) => (
+            <Orders key={index} {...item} />
+          ))}
+        </div>
+      )}
+      {data.length < 1 && <Empty text="You don't have orders at the moment" />}
       <NavBar />
     </div>
   );

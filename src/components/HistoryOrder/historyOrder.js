@@ -1,7 +1,7 @@
 import classes from "./singleOrder.module.css";
 import { Distance } from "../../constant";
 
-const NewOrder = ({ bookingId, deliveryStatus, createdAt, distance }) => {
+const NewOrder = ({ bookingId, deliveryStatus, createdAt, amount }) => {
   return (
     <div className={classes.box}>
       <div className={classes.subContainer}>
@@ -30,7 +30,7 @@ const NewOrder = ({ bookingId, deliveryStatus, createdAt, distance }) => {
         </div>
         <div className={classes.price}>
           <p>{deliveryStatus}</p>
-          <p>₦ {bookingId?.distance / 10}</p>
+          <p>₦ {amount}</p>
         </div>
       </div>
     </div>

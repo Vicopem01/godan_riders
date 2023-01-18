@@ -52,8 +52,8 @@ const Policy = () => {
         <img src={Cover} alt="Cover" />
       </div>
       <p className={classes.about}>
-        Godan Logistics is a logistics company that handles delivery of goods
-        and services from clients to their customers.
+        GoDan is an Ogun State based logistics company that handles delivery of
+        goods and services from clients to their customers.
         <br />
         We liase with Small and Medium business owners by employing learned and
         experienced riders of motorcycles and cars to efficiently deliver and
@@ -82,12 +82,13 @@ const Policy = () => {
           <div>
             <img src={Car} alt="Car" />
           </div>
-          <h4>Car Deliveries</h4>
+          <h4>Car Ride and Hire Service</h4>
           <p>
-            Logistics through cars is most convenient when you want to reach
-            customers within your locality when your goods are heavier than what
-            can be carried by a motorbike or your goods needs someone to tag
-            along to the point of delivery.
+            Hassle free and luxurious car ride services are available in
+            intra-locality regions. Also, car hire services with affordable
+            rates for interstate travels are readily available. Provision of
+            storage facilities to our clients on subscription packages for bulk
+            deliveries. needs someone to tag along to the point of delivery.
           </p>
         </div>
         <br />
